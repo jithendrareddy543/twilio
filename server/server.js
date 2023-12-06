@@ -9,9 +9,9 @@ const port = 5000;
 app.use(bodyParser.json());
 app.use(cors());
 
-// Twilio credentials
-const accountSid = 'ACa5f13c60328ca6b6f3fc49e3562826c4'
-const authToken = '636e1ef1210972540e0344125d03d836';
+// Twilio credentials from .env
+const accountSid = '';
+const authToken = '';
 const client = new twilio(accountSid, authToken);
 
 // Generate and send OTP
@@ -25,7 +25,7 @@ app.post('/send-otp', async (req, res) => {
     // Send OTP via Twilio SMS
     await client.messages.create({
       body: `Your OTP is: ${otp}`,
-      from: '+12402521696',
+      from: '',// get from .env
       to: phoneNumber,
     });
 
